@@ -54,15 +54,12 @@ public class SnakesAndLadder {
         switch(randomValue){
 
             case OPTION_NO_PLAY:
-                if((p.position)>100)
-                        p.position-=diceValue;
                 System.out.print("CLEAR   ");
                 break;
             
             case OPTION_LADDER:
                 int d1=diceValue;
-                if((p.position+d1)<=100)
-                    p.position+=d1;
+                p.position+=d1;
                 System.out.print("LADDER   ");
                 break;
 
