@@ -4,7 +4,7 @@ public class SnakesAndLadder {
     public static void main(String[] args) {
         System.out.println("Welcome to Snake and Ladder Game!");
         Player p1=new Player();
-        System.out.println("Current Position:"+p1.position);
+        System.out.println("Start Position:"+p1.position);
     }
     
 }
