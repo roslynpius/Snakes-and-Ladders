@@ -6,11 +6,14 @@ public class SnakesAndLadder {
         System.out.println("Welcome to Snake and Ladder Game!");
 
         Player p1=new Player();
+        int diceRoll=0;
+
         System.out.println("Start Position:"+p1.position);
 
         while(p1.position<100)
         {
             System.out.println("Roll the Dice!");
+            diceRoll++;
             int diceValue=rollDice();
             
             if((p1.position+diceValue)<=100)
@@ -24,6 +27,7 @@ public class SnakesAndLadder {
             System.out.println("Current Position: "+p1.position);
         }
         System.out.println("GAME OVER");
+        System.out.println("No. of Dice Rolls: "+diceRoll);
     }
 
     /**
