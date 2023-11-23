@@ -7,14 +7,23 @@ public class SnakesAndLadder {
 
         Player p1=new Player();
         System.out.println("Start Position:"+p1.position);
-        System.out.println("Roll the Dice!");
-        int diceValue=rollDice();
-        p1.position+=diceValue;//updates player position
 
-        checkOption(p1,diceValue);
+        while(p1.position<100)
+        {
+            System.out.println("Roll the Dice!");
+            int diceValue=rollDice();
+            
+            if((p1.position+diceValue)<=100)
+            {   p1.position+=diceValue;//updates player position
 
-        System.out.print("Dice Value: "+diceValue+"   ");        
-        System.out.println("Current Position: "+p1.position);
+                if(p1.position!=100)
+                    checkOption(p1,diceValue);
+            }
+                        
+            System.out.print("Dice Value: "+diceValue+"   ");        
+            System.out.println("Current Position: "+p1.position);
+        }
+        System.out.println("GAME OVER");
     }
 
     /**
@@ -27,7 +36,7 @@ public class SnakesAndLadder {
 
         Random random = new Random();
 
-        int diceValue= random.nextInt(6) + 1;
+        int diceValue= random.nextInt(6) +1;
         
         return diceValue;
     }
@@ -45,16 +54,24 @@ public class SnakesAndLadder {
         switch(randomValue){
 
             case OPTION_NO_PLAY:
+                if((p.position)>100)
+                        p.position-=diceValue;
                 System.out.print("CLEAR   ");
                 break;
             
             case OPTION_LADDER:
-                p.position+=rollDice();
+                int d1=diceValue;
+                if((p.position+d1)<=100)
+                    p.position+=d1;
                 System.out.print("LADDER   ");
                 break;
 
             case OPTION_SNAKE:
-                p.position-=rollDice();
+                int d2=diceValue;
+                if((p.position-d2)>0)
+                    p.position-=d2;
+                else
+                    p.position=0;
                 System.out.print("SNAKE   ");
                 break;
             
