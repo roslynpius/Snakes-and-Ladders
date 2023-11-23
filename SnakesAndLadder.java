@@ -19,7 +19,7 @@ public class SnakesAndLadder {
     public static void rollDice(Player p){
         int diceValue=p.rollDice();
 
-        p.position+=diceValue;
+        p.position+=diceValue;//updates player position
         
         System.out.print("Dice Value: "+diceValue+"   ");        
         System.out.println("Current Position: "+p.position);
