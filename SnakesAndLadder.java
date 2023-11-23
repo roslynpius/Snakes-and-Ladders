@@ -8,7 +8,10 @@ public class SnakesAndLadder {
         Player p1=new Player();
         System.out.println("Start Position:"+p1.position);
         System.out.println("Roll the Dice!");
-        int diceValue=rollDice(p1);
+        int diceValue=rollDice();
+        p1.position+=diceValue;//updates player position
+
+        checkOption(p1,diceValue);
 
         System.out.print("Dice Value: "+diceValue+"   ");        
         System.out.println("Current Position: "+p1.position);
@@ -20,16 +23,45 @@ public class SnakesAndLadder {
      * @param p - Player Object.
      * @return diceValue - Value on the dice
      */
-    public static int rollDice(Player p){
+    public static int rollDice(){
 
         Random random = new Random();
 
         int diceValue= random.nextInt(6) + 1;
-        p.position+=diceValue;//updates player position
-
+        
         return diceValue;
     }
 
-    
+    public static void checkOption(Player p,int diceValue)
+    {
+        Random random = new Random();
+
+        final int OPTION_NO_PLAY=0;
+        final int OPTION_LADDER=1;
+        final int OPTION_SNAKE=2;
+
+        int randomValue = random.nextInt(3);//0- No play, 1-Ladder, 2- Snake
+
+        switch(randomValue){
+
+            case OPTION_NO_PLAY:
+                System.out.print("CLEAR   ");
+                break;
+            
+            case OPTION_LADDER:
+                p.position+=rollDice();
+                System.out.print("LADDER   ");
+                break;
+
+            case OPTION_SNAKE:
+                p.position-=rollDice();
+                System.out.print("SNAKE   ");
+                break;
+            
+            default:
+                break;
+
+        }
+    }
     
 }
