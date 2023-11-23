@@ -1,4 +1,5 @@
 package com.bridgelabz.Snakes_And_Ladders;
+import java.util.Random;
 
 public class SnakesAndLadder {
     public static void main(String[] args) {
@@ -7,22 +8,28 @@ public class SnakesAndLadder {
         Player p1=new Player();
         System.out.println("Start Position:"+p1.position);
         System.out.println("Roll the Dice!");
-        rollDice(p1);
-        
+        int diceValue=rollDice(p1);
+
+        System.out.print("Dice Value: "+diceValue+"   ");        
+        System.out.println("Current Position: "+p1.position);
     }
 
     /**
      * Player rolls dice and the position is updated
      * 
      * @param p - Player Object.
+     * @return diceValue - Value on the dice
      */
-    public static void rollDice(Player p){
-        int diceValue=p.rollDice();
+    public static int rollDice(Player p){
 
+        Random random = new Random();
+
+        int diceValue= random.nextInt(6) + 1;
         p.position+=diceValue;//updates player position
-        
-        System.out.print("Dice Value: "+diceValue+"   ");        
-        System.out.println("Current Position: "+p.position);
+
+        return diceValue;
     }
+
+    
     
 }
