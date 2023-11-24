@@ -43,10 +43,9 @@ public class SnakesAndLadder {
     }
 
     /**
-     * Player rolls dice and the position is updated
-     * 
-     * @param p - Player Object.
-     * @return diceValue - Value on the dice
+     * @desc: Player rolls dice and the position is updated 
+     * @param: p - Player Object.
+     * @return: diceValue - Value on the dice
      */
     public static int rollDice(){
 
@@ -57,6 +56,12 @@ public class SnakesAndLadder {
         return diceValue;
     }
 
+    /**
+     * @desc: Player checks option     * 
+     * @param: p - Player Object.
+     *          diceValue- Value on the dice
+     * @return Returns 1 if player lands on ladder otherwise 0
+     */
     public static int checkOption(Player p,int diceValue)
     {
         Random random = new Random();
@@ -98,6 +103,10 @@ public class SnakesAndLadder {
         return 0;
     }
 
+    /**
+     * @desc: Player checks option
+     * @param: p - Player Object
+     */
     public static void playerPlay(Player p) {
         int diceValue=rollDice();
         int isLadder=0;
