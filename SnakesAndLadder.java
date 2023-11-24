@@ -1,6 +1,11 @@
 package com.bridgelabz.Snakes_And_Ladders;
 import java.util.Random;
 
+/**
+ * The SnakesAndLadder class represents the main logic of the Snake and Ladder game.
+ * It includes the initialization of players, simulation of the game, and methods for rolling the dice, checking options,
+ * and updating player positions based on dice rolls.
+ */
 public class SnakesAndLadder {
     public static void main(String[] args) {
         System.out.println("Welcome to Snake and Ladder Game!");
