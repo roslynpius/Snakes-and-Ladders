@@ -6,27 +6,39 @@ public class SnakesAndLadder {
         System.out.println("Welcome to Snake and Ladder Game!");
 
         Player p1=new Player();
-        int diceRoll=0;
+        Player p2=new Player();
+        int diceRoll1=0,diceRoll2=0;
 
-        System.out.println("Start Position:"+p1.position);
+        System.out.println("Start Position Player 1:"+p1.position);
+        System.out.println("Start Position Player 2:"+p2.position);
+        System.out.println();
 
-        while(p1.position<100)
+        while(p1.position<100 && p2.position<100)
         {
-            System.out.println("Roll the Dice!");
-            diceRoll++;
-            int diceValue=rollDice();
-            
-            if((p1.position+diceValue)<=100)
-            {   p1.position+=diceValue;//updates player position
+            System.out.println();
 
-                if(p1.position!=100)
-                    checkOption(p1,diceValue);
-            }
-                        
-            System.out.print("Dice Value: "+diceValue+"   ");        
-            System.out.println("Current Position: "+p1.position);
+            System.out.print(" Player 1:        ");
+            diceRoll1++;
+            playerPlay(p1);
+            if(p1.position==100)
+                break;
+
+            System.out.print(" Player 2:        ");
+            diceRoll2++;
+            playerPlay(p2);
+            
         }
+
         System.out.println("GAME OVER");
+        int diceRoll;
+        if(p1.position==100){
+            System.out.println("Player 1 WINS!!");
+            diceRoll=diceRoll1;
+        }
+        else{
+            System.out.println("Player 2 WINS!!");
+            diceRoll=diceRoll2;
+        }
         System.out.println("No. of Dice Rolls: "+diceRoll);
     }
 
@@ -45,7 +57,7 @@ public class SnakesAndLadder {
         return diceValue;
     }
 
-    public static void checkOption(Player p,int diceValue)
+    public static int checkOption(Player p,int diceValue)
     {
         Random random = new Random();
 
@@ -68,7 +80,7 @@ public class SnakesAndLadder {
                 if((p.position+d1)<=100)
                     p.position+=d1;
                 System.out.print("LADDER   ");
-                break;
+                return 1;
 
             case OPTION_SNAKE:
                 int d2=diceValue;
@@ -83,6 +95,27 @@ public class SnakesAndLadder {
                 break;
 
         }
+        return 0;
+    }
+
+    public static void playerPlay(Player p) {
+        int diceValue=rollDice();
+        int isLadder=0;
+            
+            if((p.position+diceValue)<=100)
+            {   p.position+=diceValue;//updates player position
+
+                if(p.position!=100)
+                    isLadder=checkOption(p,diceValue);
+            }
+                        
+            System.out.print("Dice Value: "+diceValue+"   ");        
+            System.out.println("Current Position: "+p.position);
+            
+            if(isLadder==1)
+            {
+                playerPlay(p);
+            }
     }
     
 }
